@@ -67,11 +67,12 @@ export default {
         return state.selected_cities.map((city) => {
           if (city.weather) {
             return city.weather.map((day) => {
-              // each date is formated to extract a 2 digits hours:minutes
-              return new Intl.DateTimeFormat("fr", {
-                hour: "2-digit",
-                minute: "2-digit",
-              }).format(new Date(day.date));
+              // each date is formated to extract a 2 digits hours:minutes (fixed to 00 min)
+              return new Date(day.date)
+                .getHours()
+                .toString()
+                .padStart(2, "0")
+                .concat(":00");
             });
           } else {
             return [];
