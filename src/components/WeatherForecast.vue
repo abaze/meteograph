@@ -55,7 +55,7 @@ export default {
     }),
     // update chart options with a computed
     chartOptions() {
-      // const title = { text: this.selectedSeries?.label };
+      const title = { text: "" /*this.selectedSeries?.label*/ };
 
       // get series data with the getter 'getSeriesData' params (id of city, id of series)
       const series = this.cities.map((data) => {
@@ -79,6 +79,7 @@ export default {
       };
       // we returned labels of x/y axis and the datas
       return {
+        title,
         xAxis,
         yAxis,
         series,
